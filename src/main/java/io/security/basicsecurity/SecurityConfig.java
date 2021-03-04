@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                })
 //                .permitAll()
         ;
-        http
+//        http
 //                .logout()
 //                .logoutUrl("/logout")
 //                .logoutSuccessUrl("/login")
@@ -80,10 +80,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                })
 //                .deleteCookies("remember-me")
 //                .and()
-                .rememberMe()
+//                .rememberMe()
 //                .rememberMeParameter("remember")
 //                .tokenValiditySeconds(3600)
                 // 인증 시 user 계정을 조회하는 기능
-                .userDetailsService(userDetailsService);
+//                .userDetailsService(userDetailsService);
+        http
+                // 동시 세션 제어
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true);
+        http
+                // 세션 고정 보호
+                .sessionManagement()
+                .sessionFixation().changeSessionId();
     }
 }
