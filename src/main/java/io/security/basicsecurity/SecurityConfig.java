@@ -59,9 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll()
         ;
         http
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
+//                .logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login")
                 // 별도 로그아웃 핸들러 생성 가능
 //                .addLogoutHandler(new LogoutHandler() {
 //                    @Override
@@ -71,18 +71,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                        session.invalidate();
 //                    }
 //                })
-                .logoutSuccessHandler(new LogoutSuccessHandler() {
-                    @Override
-                    public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                        System.out.println("logout");
-                        httpServletResponse.sendRedirect("/login");
-                    }
-                })
+//                .logoutSuccessHandler(new LogoutSuccessHandler() {
+//                    @Override
+//                    public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+//                        System.out.println("logout");
+//                        httpServletResponse.sendRedirect("/login");
+//                    }
+//                })
 //                .deleteCookies("remember-me")
-                .and()
+//                .and()
                 .rememberMe()
-                .rememberMeParameter("remember")
-                .tokenValiditySeconds(3600)
+//                .rememberMeParameter("remember")
+//                .tokenValiditySeconds(3600)
                 // 인증 시 user 계정을 조회하는 기능
                 .userDetailsService(userDetailsService);
     }
